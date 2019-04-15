@@ -34,9 +34,9 @@ public class CompressController {
     @ResponseBody
     public Compress dataCompress(@RequestParam("src")String srcFilePath){
         String src=srcFilePath.trim();
-        String middleFilePath = "/software/MachineData/Testdatee/中间结果.txt";
+        String middleFilePath = "/software/MachineData/中间结果.txt";
         //       输出压缩结果
-        String resultFilePath = "/software/MachineData/TestDataResult/压缩结果.zip";
+        String resultFilePath = "/software/MachineData/压缩结果.zip";
         double rate;
         long startTime=System.currentTimeMillis();
         File tarFile = new File(src);
@@ -60,7 +60,7 @@ public class CompressController {
     /**
      *解压缩
      * @param 带解压文件路径
-     * @return
+     * @return 解压成功
      */
     @Autowired
     private Ucompress ucompress;
@@ -71,18 +71,20 @@ public class CompressController {
 
 //        String compressedPath = "E:/DataSet/压缩结果.zip";
         String comdPath=compressedPath.trim();
-        String middleFilePath = "/software/MachineData/DataSet";
-        String resultFilePath = "/software/MachineData/DataSet/还原数据.txt";
-
+        String middleFilePath = "/software/MachineData";
+        String resultFilePath = "/software/MachineData/还原数据.txt";
+        long startTime=System.currentTimeMillis();
         unZip(comdPath, middleFilePath);
 
-       readCompressedFile("/software/MachineData/DataSet/中间结果.txt");
+       readCompressedFile("/software/MachineData/中间结果.txt");
        timeReduction();
        longitudeReduction();
        latitudeReduction();
        writeToFile(resultFilePath);
-
-        ucompress.setMsg("解压成功");
-        return ucompress;
+       long endTime=System.currentTimeMillis();
+       //解压时间，单位ms
+       ucompress.setRunTime(endTime-startTime);
+       ucompress.setMsg("解压成功");
+       return ucompress;
     }
 }

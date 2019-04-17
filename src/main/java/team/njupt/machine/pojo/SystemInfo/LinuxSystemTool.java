@@ -1,4 +1,4 @@
-package team.njupt.machine.service;
+package team.njupt.machine.pojo.SystemInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

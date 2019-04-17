@@ -3,14 +3,11 @@ package team.njupt.machine.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import team.njupt.machine.service.LinuxCpuInfo;
-import team.njupt.machine.service.LinuxMerroyInfo;
-import team.njupt.machine.service.LinuxSystemTool;
+import team.njupt.machine.pojo.SystemInfo.LinuxCpuInfo;
+import team.njupt.machine.pojo.SystemInfo.LinuxMerroyInfo;
+import team.njupt.machine.pojo.SystemInfo.LinuxSystemTool;
 
 import java.io.*;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 @CrossOrigin()
 //支持跨域请求
@@ -20,7 +17,14 @@ public class SystemInfoController {
 
     @Autowired
     private LinuxMerroyInfo linuxMerroyInfo;
+    private LinuxCpuInfo linuxCpuInfo;
 
+    /**
+     * 获取服务器内存基本信息
+     * @return useRate内存使用率
+     * @throws IOException
+     * @throws InterruptedException
+     */
     @RequestMapping(value = "merryInfo",method = RequestMethod.POST)
     @ResponseBody
     public LinuxMerroyInfo merroyMsg()throws IOException, InterruptedException{
@@ -39,5 +43,12 @@ public class SystemInfoController {
         useRate=(double)Math.round(useRate*100)/100;
         linuxMerroyInfo.setUseRate(useRate);
         return linuxMerroyInfo;
+    }
+
+    @RequestMapping(value = "cpuInfo",method = RequestMethod.POST)
+    @ResponseBody
+    public LinuxCpuInfo cpuMsg()throws IOException, InterruptedException{
+
+        return linuxCpuInfo;
     }
 }

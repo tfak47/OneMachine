@@ -192,12 +192,17 @@
       <version>1.8.9</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/ant/ant -->
+    <!--  压缩、解压缩所需依赖https://mvnrepository.com/artifact/ant/ant -->
     <dependency>
       <groupId>ant</groupId>
       <artifactId>ant</artifactId>
       <version>1.6.5</version>
     </dependency>
+
+    <!--系统资源 https://mvnrepository.com/artifact/org.fusesource/sigar -->
+
+
+
 
   </dependencies>
   <build>

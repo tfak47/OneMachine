@@ -4,14 +4,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LinuxCpuInfo {
-    private float[] cpuId;
+ private double usedCpu;
 
-    public float[] getCpuId() {
-        return cpuId;
+    public double getUsedCpu() {
+        return usedCpu;
     }
 
-    public void setCpuId(float[] cpuId) {
-        this.cpuId=cpuId;
+    public void setUsedCpu(double usedCpu) {
+        this.usedCpu = usedCpu;
     }
 }
 

@@ -52,9 +52,9 @@ public class SystemInfoController {
     @RequestMapping(value = "cpuInfo")
     @ResponseBody
     public LinuxCpuInfo cpuMsg()throws IOException, InterruptedException{
-        float[] cpuIdi={1,2,3};
-//        System.out.println(LinuxSystemTool.getCpuInfo());
-        linuxCpuInfo.setCpuId(cpuIdi);
+        double cpuUsed;
+        cpuUsed=LinuxSystemTool.getCpuInfo();
+        linuxCpuInfo.setUsedCpu(cpuUsed);
         return linuxCpuInfo;
     }
 }

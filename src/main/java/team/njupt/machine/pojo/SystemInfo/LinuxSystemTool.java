@@ -18,7 +18,7 @@ public final class LinuxSystemTool {
      */
 
 
-    public  static int[] getMemInfo() throws IOException, InterruptedException
+    public static int[] getMemInfo() throws IOException, InterruptedException
     {
         File file = new File("/proc/meminfo");
         BufferedReader br = new BufferedReader(new InputStreamReader(
@@ -45,7 +45,7 @@ public final class LinuxSystemTool {
             else  if (str.equalsIgnoreCase("SwapFree:"))
                 result[3]=Integer.parseInt(token.nextToken());
         }
-
+        br.close();
         return result;
     }
 
@@ -78,7 +78,7 @@ public final class LinuxSystemTool {
         int nice2 = Integer.parseInt(token.nextToken());
         int sys2 = Integer.parseInt(token.nextToken());
         int idle2 = Integer.parseInt(token.nextToken());
-
+        br.close();
         return ( float )((user2 + sys2 + nice2) - (user1 + sys1 + nice1)) / ( float )((user2 + nice2 + sys2 + idle2) - (user1 + nice1 + sys1 + idle1));
     }
 

@@ -24,7 +24,7 @@ import static team.njupt.machine.pojo.decompress.UnZip.unZip;
 public class CompressController {
     @Autowired
     private Compress cmp;
-    private Ucompress ucompress;
+
     /**
      * 压缩
      * @param 带压缩文件路径
@@ -62,9 +62,10 @@ public class CompressController {
      * @param 带解压文件路径
      * @return 解压成功
      */
+    @Autowired
+    private Ucompress ucompress;
     @RequestMapping(value = "rollback",method = RequestMethod.POST)
     @ResponseBody
-
     public Ucompress dataUnCompress(@RequestParam("src")String compressedPath){
 
 //        String compressedPath = "E:/DataSet/压缩结果.zip";

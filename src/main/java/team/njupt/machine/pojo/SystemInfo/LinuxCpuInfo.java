@@ -2,16 +2,20 @@ package team.njupt.machine.pojo.SystemInfo;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 @Service
 public class LinuxCpuInfo {
-    private ArrayList LinuxCpuInfo;
+    private float[] cpuId;
 
-    public ArrayList getLinuxCpuInfo() {
-        return LinuxCpuInfo;
+    public float[] getCpuId() {
+        return cpuId;
     }
 
-    public void setLinuxCpuInfo(ArrayList linuxCpuInfo) {
-        LinuxCpuInfo = linuxCpuInfo;
+    public void setCpuId(float[] cpuId) {
+        this.cpuId=cpuId;
     }
 }
+
+
+
+
+

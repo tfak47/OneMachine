@@ -8,6 +8,7 @@ import team.njupt.machine.pojo.SystemInfo.LinuxMerroyInfo;
 import team.njupt.machine.pojo.SystemInfo.LinuxSystemTool;
 
 import java.io.*;
+import java.util.ArrayList;
 
 @CrossOrigin()
 //支持跨域请求
@@ -17,7 +18,7 @@ public class SystemInfoController {
 
     @Autowired
     private LinuxMerroyInfo linuxMerroyInfo;
-    private LinuxCpuInfo linuxCpuInfo;
+
 
     /**
      * 获取服务器内存基本信息
@@ -25,7 +26,7 @@ public class SystemInfoController {
      * @throws IOException
      * @throws InterruptedException
      */
-    @RequestMapping(value = "merryInfo",method = RequestMethod.POST)
+    @RequestMapping(value = "merryInfo")
     @ResponseBody
     public LinuxMerroyInfo merroyMsg()throws IOException, InterruptedException{
         int[] result=new int[4];
@@ -45,10 +46,15 @@ public class SystemInfoController {
         return linuxMerroyInfo;
     }
 
-    @RequestMapping(value = "cpuInfo",method = RequestMethod.POST)
+    @Autowired
+    private LinuxCpuInfo linuxCpuInfo;
+
+    @RequestMapping(value = "cpuInfo")
     @ResponseBody
     public LinuxCpuInfo cpuMsg()throws IOException, InterruptedException{
-
+        float[] cpuIdi={1,2,3};
+//        System.out.println(LinuxSystemTool.getCpuInfo());
+        linuxCpuInfo.setCpuId(cpuIdi);
         return linuxCpuInfo;
     }
 }
